@@ -15,5 +15,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     '@typescript-eslint/no-explicit-any': 'off', // 'any' 타입 사용을 허용
+    "no-extra-boolean-cast": "off" // 불필요한 불리언 캐스팅 허용 (예: !!value) 난 필요
   },
 }

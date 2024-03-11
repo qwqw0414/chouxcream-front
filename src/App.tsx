@@ -9,6 +9,12 @@ interface RouteProps {
 
 function App() {
 
+  // 운영 환경 로깅 
+  console.log('NODE_ENV', import.meta.env.NODE);
+
+  // api 서버 주소 로깅
+  console.log('SERVER_HOST', import.meta.env.VITE_SERVER_HOST);
+
   // 라우트 매핑 설정 
   // @TODO: 라우트 권한 설정
   const routes: Array<RouteProps> = [
