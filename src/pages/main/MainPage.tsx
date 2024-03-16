@@ -3,7 +3,7 @@ import ContentsWrapper from "@/components/layout/ContentsWrapper";
 
 const MainPage = () => {
     return (
-        <ContentsWrapper>
+        <ContentsWrapper tabType="main">
             <div className="text-4xl">
                 Dumewj wogjqp wogid fjwio
             </div>

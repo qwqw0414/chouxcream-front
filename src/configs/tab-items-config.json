@@ -1,0 +1,46 @@
+{
+    "main": [
+        {
+            "name": "추천",
+            "link": "/"
+        },
+        {
+            "name": "랭킹",
+            "link": "/temp-a"
+        },
+        {
+            "name": "럭셔리",
+            "link": "/temp-a"
+        },
+        {
+            "name": "남성",
+            "link": "/temp-a"
+        },
+        {
+            "name": "여성",
+            "link": "/temp-a"
+        },
+        {
+            "name": "발견",
+            "link": "/temp-a"
+        }
+    ],
+    "test": [
+        {
+            "name": "NONE",
+            "link": "/test"
+        },
+        {
+            "name": "Redux",
+            "link": "/test/redux"
+        },
+        {
+            "name": "ReactQuery",
+            "link": "/test/react-query"
+        },
+        {
+            "name": "Notification",
+            "link": "/test/notification"
+        }
+    ]
+}

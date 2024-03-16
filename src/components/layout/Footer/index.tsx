@@ -2,7 +2,7 @@ import { Button, Typography } from "@material-tailwind/react";
 
 const Footer: React.FC = () => {
     return (
-        <footer className="p-10 border-t border-t-gray-300">
+        <footer className="2xl:container mt-10 p-10 border-t border-t-gray-300">
             <div className="flex flex-col">
 
                 <div className="flex border-b border-b-gray-300 pb-[56px]">
