@@ -1,5 +1,6 @@
 import MainPage from "./pages/main/MainPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { TestPage } from "./pages/test/TestPage";
 
 interface RouteProps {
   path: string; // 라우트 경로
@@ -20,6 +21,7 @@ function App() {
   const routes: Array<RouteProps> = [
     // ex :: { path: '/', component: MainPage, role: 'ROLE_ADMIN'},
     { path: '/', component: MainPage },
+    { path: '/test', component: TestPage },
   ];
 
   return (

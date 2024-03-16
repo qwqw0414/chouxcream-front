@@ -17,7 +17,7 @@ const persistConfig = {
 
     // redux-persist에 저장할 리듀서를 지정
     whitelist: [
-        // 'authReducer'
+        'authReducer'
     ]
 }
 

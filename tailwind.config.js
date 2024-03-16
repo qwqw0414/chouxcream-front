@@ -8,6 +8,12 @@ export default withMT({
     "./node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '4rem',
+      },
+    },
     extend: {
       colors: {
         dark: "#141517"
