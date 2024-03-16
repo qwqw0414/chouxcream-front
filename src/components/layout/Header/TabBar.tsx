@@ -9,10 +9,10 @@ interface TabBarProps {
 export const TabBar: React.FC<TabBarProps> = ({ items }) => {
     return (
         items &&
-        <div className="h-[38px] text-[18px] text-gray-800 flex items-end gap-8">
+        <div className="h-[38px] text-[16px] text-gray-800 flex items-end gap-7">
             {items.map((item, index) => (
                 <NavLink key={index} to={item.link} className={({ isActive }) => {
-                    return !!isActive ? "border-b-2 border-black font-bold pb-1" : "pb-1";
+                    return !!isActive ? "border-b-[2px] border-black font-bold pb-1" : "pb-1";
                 }}>
                     {item.name}
                 </NavLink>

@@ -2,7 +2,6 @@ import React from 'react';
 import Header, { TabType } from './Header';
 import Footer from './Footer';
 import { FootNav } from './FootNav';
-import tabItmes from '@/configs/tab-items-config.json';
 
 interface ContentsWrapperProps {
     children: React.ReactNode;
