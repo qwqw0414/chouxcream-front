@@ -14,7 +14,7 @@ const ContentsWrapper: React.FC<ContentsWrapperProps> = ({ children }) => {
     // @TODO: 레이아웃 컴포넌트 구성
     
     return (
-        <main className='font-pretendard relative min-h-screen flex flex-col justify-between antialiased'>
+        <main className='font-sans relative min-h-screen flex flex-col justify-between antialiased'>
             <Header />
             {children}
             <Footer />
