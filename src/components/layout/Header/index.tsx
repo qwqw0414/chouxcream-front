@@ -6,6 +6,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { TabBar } from "./TabBar";
 import tabItems from '@/configs/tab-items-config.json';
+import { SearchView } from "./SearchView";
+import React from "react";
 
 // 탭 타입
 export type TabType = keyof typeof tabItems;
@@ -19,6 +21,10 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
     // 로그인 여부
     const isLogged: boolean = useAppSelector(state => state.authReducer.isLogged);
+
+    // 검색창
+    const [openSearchView, setOpenSearchView] = React.useState(false);
+    const handleSearchView = () => setOpenSearchView(!openSearchView);
 
     return (
         // 고정 헤더
@@ -66,7 +72,11 @@ const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
                                 className={({ isActive }) => { return isActive ? "text-black font-bold" : ""; }}>
                                 SHOP
                             </NavLink>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className="cursor-pointer text-black" size="xl" />
+                            <FontAwesomeIcon 
+                                onClick={handleSearchView}
+                                icon={faMagnifyingGlass} 
+                                className="cursor-pointer text-black" 
+                                size="xl" />
                         </div>
                         <div className="md:hidden flex p-2">
                             <FontAwesomeIcon icon={faBell} className="cursor-pointer text-gray-600" size="xl" />
@@ -84,6 +94,9 @@ const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
                     {!!tabType && <TabBar items={tabItems[tabType]} />}
                 </div>
             </div>
+
+            {/* SearchView */}
+            <SearchView open={openSearchView} handleOpen={handleSearchView} />
         </header>
     )
 }

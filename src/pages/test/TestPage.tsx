@@ -1,4 +1,6 @@
+import { KreamInput } from "@/components/common/KreamInput";
 import ContentsWrapper from "@/components/layout/ContentsWrapper"
+import { useState } from "react";
 
 
 const data = [
@@ -114,6 +116,8 @@ const data = [
 
 export const TestPage: React.FC = () => {
 
+    const [value, setValue] = useState<string>('')
+
     return (
         <ContentsWrapper title="CODE EXAMPLE" tabType="test">
             <div className="container mt-[200px] px-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -126,6 +130,7 @@ export const TestPage: React.FC = () => {
                         />
                     </div>
                 ))}
+                <KreamInput value={value} onChange={(e) => setValue(e.currentTarget.value)} />
             </div>
         </ContentsWrapper>
     )
