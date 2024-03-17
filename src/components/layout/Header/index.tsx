@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store";
 import { Typography } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,8 +6,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { TabBar } from "./TabBar";
 import tabItems from '@/configs/tab-items-config.json';
-import { SearchView } from "./SearchView";
 import React from "react";
+import { openNotificationBar, openSearchView } from "@/store/features/layoutSlice";
 
 // 탭 타입
 export type TabType = keyof typeof tabItems;
@@ -22,9 +22,7 @@ const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
     // 로그인 여부
     const isLogged: boolean = useAppSelector(state => state.authReducer.isLogged);
 
-    // 검색창
-    const [openSearchView, setOpenSearchView] = React.useState(false);
-    const handleSearchView = () => setOpenSearchView(!openSearchView);
+    const dispatch = useAppDispatch();
 
     return (
         // 고정 헤더
@@ -39,7 +37,13 @@ const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
                         <Link to="/saved/tab/saved-product">관심</Link>
 
                         {/* @TODO 알림 사이드 창 */}
-                        <div className="cursor-pointer">알림</div>
+                        <div
+                            onClick={() => dispatch(openNotificationBar())}
+                            className="cursor-pointer"
+                        >
+                            알림
+                        </div>
+
 
                         {!!isLogged ?
                             <Link to="/logout">로그아웃</Link>
@@ -72,10 +76,10 @@ const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
                                 className={({ isActive }) => { return isActive ? "text-black font-bold" : ""; }}>
                                 SHOP
                             </NavLink>
-                            <FontAwesomeIcon 
-                                onClick={handleSearchView}
-                                icon={faMagnifyingGlass} 
-                                className="cursor-pointer text-black" 
+                            <FontAwesomeIcon
+                                onClick={() => dispatch(openSearchView())}
+                                icon={faMagnifyingGlass}
+                                className="cursor-pointer text-black"
                                 size="xl" />
                         </div>
                         <div className="md:hidden flex p-2">
@@ -94,9 +98,6 @@ const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
                     {!!tabType && <TabBar items={tabItems[tabType]} />}
                 </div>
             </div>
-
-            {/* SearchView */}
-            <SearchView open={openSearchView} handleOpen={handleSearchView} />
         </header>
     )
 }

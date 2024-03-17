@@ -2,6 +2,8 @@ import React from 'react';
 import Header, { TabType } from './Header';
 import Footer from './Footer';
 import { FootNav } from './FootNav';
+import { NotificationBar } from './NotificationBar';
+import { SearchView } from './SearchView';
 
 interface ContentsWrapperProps {
     children: React.ReactNode;
@@ -22,6 +24,12 @@ const ContentsWrapper: React.FC<ContentsWrapperProps> = ({ children, title, tabT
             {children}
             <Footer />
             <FootNav />
+
+            {/* 알림 사이드 창 */}
+            <NotificationBar />
+
+            {/* 검색창 */}
+            <SearchView />
         </main>
     )
 }

@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
 import authReducer from "@/store/features/authSlice";
+import layoutReducer from "@/store/features/layoutSlice";
 
 // redux-persist 설정
 const persistConfig = {
@@ -23,7 +24,8 @@ const persistConfig = {
 
 // 리듀서 매핑
 const rootReducer = combineReducers({
-    authReducer
+    authReducer,
+    layoutReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

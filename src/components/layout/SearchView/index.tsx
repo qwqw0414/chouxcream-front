@@ -4,15 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Chip, Dialog, DialogBody, DialogHeader, IconButton, Typography } from "@material-tailwind/react";
 import React from "react";
 import moment from 'moment';
+import { useAppDispatch, useAppSelector } from "@/store";
+import { closeSearchView } from "@/store/features/layoutSlice";
 
-interface SearchViewProps {
-    open: boolean;
-    handleOpen: () => void;
-}
+export const SearchView: React.FC = () => {
 
-export const SearchView: React.FC<SearchViewProps> = ({ open, handleOpen }) => {
-
+    // 검색어 상태
     const [query, setQuery] = React.useState<string>("");
+
+    // 최근 검색어
     const [searchHistory, setSearchHistory] = React.useState<string[]>([
         "스노우파크",
         "스노우 파크",
@@ -20,7 +20,7 @@ export const SearchView: React.FC<SearchViewProps> = ({ open, handleOpen }) => {
         "아미",
         "반스"
     ]);
-
+    // 검색 추천어
     const [searchRecommend, setSearchRecommend] = React.useState<string[]>([
         "카리나 가디건",
         "나이키 P-6000",
@@ -29,6 +29,7 @@ export const SearchView: React.FC<SearchViewProps> = ({ open, handleOpen }) => {
         "스투시 후드집업",
         "아크테릭스 티셔츠"
     ]);
+    // 인기 검색어
     const [searchPopular, setSearchPopular] = React.useState<string[]>([
         "모남희",
         "져지",
@@ -52,7 +53,11 @@ export const SearchView: React.FC<SearchViewProps> = ({ open, handleOpen }) => {
         "롱샴"
     ]);
 
+    // 검색창 열림 상태
+    const open = useAppSelector((state) => state.layoutReducer.searchView) || false;
+    const dispatch = useAppDispatch();
 
+    // 검색어 입력 이벤트 핸들러 @TODO 
     const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             console.log(query);
@@ -66,18 +71,19 @@ export const SearchView: React.FC<SearchViewProps> = ({ open, handleOpen }) => {
         <Dialog
             open={open}
             size={"xxl"}
-            handler={handleOpen}
+            handler={() => dispatch(closeSearchView())}
             className="overflow-y-scroll "
         >
             <DialogHeader className="p-0 pt-2 justify-end">
                 {/* 검색창 닫기 버튼 */}
-                <IconButton variant="text" onClick={handleOpen}>
+                <IconButton variant="text" onClick={() => dispatch(closeSearchView())}>
                     <FontAwesomeIcon icon={faX} size="xl" className="text-gray-500" />
                 </IconButton>
             </DialogHeader>
 
             {/* 컨텐츠 */}
             <DialogBody className="p-0 container flex flex-col max-w-[770px] text-black">
+                
                 {/* 검색바 @TODO */}
                 <KreamInput
                     className="text-[24px]"
