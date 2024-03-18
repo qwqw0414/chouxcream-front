@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
                                 HOME
                             </NavLink>
                             <NavLink
-                                to="/test"
+                                to="/test/none"
                                 className={({ isActive }) => { return isActive ? "text-black font-bold" : ""; }}>
                                 TEST
                             </NavLink>

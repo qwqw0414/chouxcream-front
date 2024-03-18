@@ -1,6 +1,7 @@
 import MainPage from "./pages/main/MainPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TestPage } from "./pages/test/TestPage";
+import { ReduxTestPage } from "./pages/test/ReduxTestPage";
 
 interface RouteProps {
   path: string; // 라우트 경로
@@ -20,8 +21,20 @@ function App() {
   // @TODO: 라우트 권한 설정
   const routes: Array<RouteProps> = [
     // ex :: { path: '/', component: MainPage, role: 'ROLE_ADMIN'},
+
+    // ############################################################
+    // 메인 페이지
+    // ############################################################
     { path: '/', component: MainPage },
-    { path: '/test', component: TestPage },
+
+
+    // ############################################################
+    // 테스트 페이지
+    // ############################################################
+    { path: '/test/none', component: TestPage },
+    { path: '/test/redux', component: ReduxTestPage },
+
+
   ];
 
   return (

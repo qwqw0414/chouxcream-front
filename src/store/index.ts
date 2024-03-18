@@ -9,6 +9,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
 import authReducer from "@/store/features/authSlice";
 import layoutReducer from "@/store/features/layoutSlice";
+import testReducer from "@/store/features/testSlice";
 
 // redux-persist 설정
 const persistConfig = {
@@ -26,6 +27,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     authReducer,
     layoutReducer,
+    testReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
