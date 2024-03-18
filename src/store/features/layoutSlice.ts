@@ -6,6 +6,8 @@ export interface LayoutState {
 }
 
 const initialState = {
+    notificationBar: false,
+    searchView: false,
 } as LayoutState;
 
 export const layout = createSlice({

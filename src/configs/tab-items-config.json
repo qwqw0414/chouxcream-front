@@ -28,7 +28,7 @@
     "test": [
         {
             "name": "NONE",
-            "link": "/test"
+            "link": "/test/none"
         },
         {
             "name": "Redux",
