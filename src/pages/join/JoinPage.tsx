@@ -1,14 +1,14 @@
-import AuthFormInput from "@/components/common/AuthFormInput";
 import ContentsWrapper from "@/components/layout/ContentsWrapper";
-import AuthWrapper from "@/components/layout/AuthWrapper";
 import { useForm, SubmitHandler } from "react-hook-form";
+import AuthFormInput from "@/components/common/AuthFormInput";
+import AuthWrapper from "@/components/layout/AuthWrapper";
 
 export interface IFormInput {
-  phone?: string; 
-  email?: string;
+  email?: string; 
+  password?: string;
 }
 
-const FindPasswordPage: React.FC = () => {
+const JoinPage: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -18,34 +18,18 @@ const FindPasswordPage: React.FC = () => {
   });
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
-  const notice =
-    "가입 시 등록하신 휴대폰 번호와 이메일을 입력하시면,\n휴대폰으로 임시 비밀번호를 전송해 드립니다.";
-
   return (
     <ContentsWrapper>
       <AuthWrapper
-        title="비밀번호 찾기"
-        notice={notice}
+        title="회원가입"
         isFormValid={isValid}
-        buttonType="문자 발송하기"
+        buttonType="가입하기"
       >
         {/* 폼 */}
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* 휴대폰 번호 인풋 */}
-          <AuthFormInput
-            label="휴대폰 번호"
-            type="number"
-            placeholder="가입하신 휴대폰 번호"
-            register={register}
-            pattern={/^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/}
-            patternMessage="휴대폰 번호를 정확히 입력해주세요."
-            errors={errors.phone?.message}
-            name="phone"
-          />
-
           {/* 이메일 주소 인풋 */}
           <AuthFormInput
-            label="이메일 주소"
+            label="이메일 주소*"
             type="text"
             placeholder="예) kream@kream.co.kr"
             register={register}
@@ -54,10 +38,22 @@ const FindPasswordPage: React.FC = () => {
             errors={errors.email?.message}
             name="email"
           />
+
+          {/* 비밀번호 인풋 */}
+          <AuthFormInput
+            label="비밀번호*"
+            type="password"
+            placeholder="영문, 숫자, 특수문자 조합 8-16자"
+            register={register}
+            pattern={/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/}
+            patternMessage="이메일 주소를 정확히 입력해주세요."
+            errors={errors.password?.message}
+            name="password"
+          /> 
         </form>
       </AuthWrapper>
     </ContentsWrapper>
   );
 };
 
-export default FindPasswordPage;
+export default JoinPage;

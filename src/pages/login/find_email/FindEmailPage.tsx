@@ -1,6 +1,6 @@
-import FindFormInput from "@/components/common/FindFormInput";
+import AuthFormInput from "@/components/common/AuthFormInput";
 import ContentsWrapper from "@/components/layout/ContentsWrapper";
-import FindWrapper from "@/components/layout/FindWrapper";
+import AuthWrapper from "@/components/layout/AuthWrapper";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 // "이메일 아이디 찾기" 폼에서 사용될 입력 필드의 타입
@@ -27,7 +27,7 @@ const FindEmailPage: React.FC = () => {
 
   return (
     <ContentsWrapper>
-      <FindWrapper
+      <AuthWrapper
         title="이메일 아이디 찾기"
         notice={notice}
         isFormValid={isValid}
@@ -36,7 +36,7 @@ const FindEmailPage: React.FC = () => {
         {/* 폼 */}
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* 휴대폰 번호 인풋 */}
-          <FindFormInput
+          <AuthFormInput
             label="휴대폰 번호"
             type="number"
             placeholder="가입하신 휴대폰 번호"
@@ -46,7 +46,7 @@ const FindEmailPage: React.FC = () => {
             name="phone"
           />
         </form>
-      </FindWrapper>
+      </AuthWrapper>
     </ContentsWrapper>
   );
 };

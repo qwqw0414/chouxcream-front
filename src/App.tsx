@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TestPage } from "./pages/test/TestPage";
 import FindPasswordPage from "./pages/login/find_password/FindPasswordPage";
 import FindEmailPage from "./pages/login/find_email/FindEmailPage";
+import JoinPage from "./pages/join/JoinPage";
 
 interface RouteProps {
   path: string; // 라우트 경로
@@ -26,6 +27,7 @@ function App() {
     { path: '/test', component: TestPage },
     { path: '/login/find_password', component: FindPasswordPage },
     { path: '/login/find_email', component: FindEmailPage },
+    { path: '/join', component: JoinPage },
   ];
 
   return (
