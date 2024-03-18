@@ -20,7 +20,7 @@ export const ReduxTestPage: React.FC = () => {
 
     return (
         <ContentsWrapper title="CODE EXAMPLE" tabType="test">
-            <div className="container flex flex-col mt-[200px]">
+            <div className="container flex flex-col">
                 <div className="flex flex-col gap-4">
                     <Typography variant="h3">
                         1. Count test : count=[{count}]
