@@ -6,8 +6,9 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { TabBar } from "./TabBar";
 import tabItems from '@/configs/tab-items-config.json';
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { openNotificationBar, openSearchView } from "@/store/features/layoutSlice";
+import debounce from "lodash/debounce";
 
 // 탭 타입
 export type TabType = keyof typeof tabItems;
@@ -21,13 +22,40 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
     // 로그인 여부
     const isLogged: boolean = useAppSelector(state => state.authReducer.isLogged);
-
     const dispatch = useAppDispatch();
+    const [currentHeight, setCurrentHeight] = React.useState(0);
+    const header = useRef<HTMLDivElement>(null);
+
+    // 헤더 높이 상태 업데이트
+    useEffect(() => {
+        // 디바운싱된 리사이즈 핸들러
+        const handleResize = debounce(() => {
+            if (header.current) {
+                const newHeight = header.current.offsetHeight;
+                // 헤더의 높이가 변경된 경우에만 상태 업데이트
+                if (newHeight !== currentHeight) {
+                    setCurrentHeight(newHeight);
+                }
+            }
+        }, 10); // 250ms 동안 이벤트를 그룹화
+
+        // 리사이즈 이벤트 리스너 추가
+        window.addEventListener('resize', handleResize);
+        // 컴포넌트 마운트 시에도 한 번 실행하여 초기 높이 설정
+        handleResize();
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            handleResize.cancel(); // 컴포넌트 언마운트 시 디바운싱된 함수의 대기 중인 실행을 취소
+        };
+    }, [currentHeight]); // 의존성 배열에 currentHeight 추가
 
     return (
         // 고정 헤더
-        <header >
-            <div className="fixed bg-white w-full border-b border-b-gray-300">
+        <header style={{
+            marginBottom: currentHeight
+        }}>
+            <div ref={header} className="fixed bg-white w-full border-b border-b-gray-300">
                 <div className="flex flex-col px-10 2xl:container">
                     {/* 상단 바로가기 : 고객센터, 마이페이지, 관심, 알림, 로그인 */}
                     <div className="hidden md:flex gap-6 justify-end text-xs text-gray-700 mt-2">
@@ -62,17 +90,20 @@ const Header: React.FC<HeaderProps> = ({ title, tabType }) => {
                         <div className="hidden md:flex gap-10 items-center mr-2 text-lg text-gray-700">
                             <NavLink
                                 to="/"
+                                end
                                 // className={({ isActive, isPending }) => {
                                 className={({ isActive }) => { return isActive ? "text-black font-bold" : ""; }}>
                                 HOME
                             </NavLink>
                             <NavLink
                                 to="/test"
+                                end
                                 className={({ isActive }) => { return isActive ? "text-black font-bold" : ""; }}>
                                 TEST
                             </NavLink>
                             <NavLink
                                 to="/search"
+                                end
                                 className={({ isActive }) => { return isActive ? "text-black font-bold" : ""; }}>
                                 SHOP
                             </NavLink>

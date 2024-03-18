@@ -120,7 +120,7 @@ export const TestPage: React.FC = () => {
 
     return (
         <ContentsWrapper title="CODE EXAMPLE" tabType="test">
-            <div className="container mt-[200px] px-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            <div className="container px-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {data.map(({ imageLink }, index) => (
                     <div key={index}>
                         <img

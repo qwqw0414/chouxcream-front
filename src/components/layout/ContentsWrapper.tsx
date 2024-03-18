@@ -21,8 +21,12 @@ const ContentsWrapper: React.FC<ContentsWrapperProps> = ({ children, title, tabT
     return (
         <main className='font-sans relative min-h-screen flex flex-col justify-between antialiased'>
             <Header title={title} tabType={tabType} />
-            {children}
+            <div className='grow'>
+                {children}
+            </div>
             <Footer />
+
+            {/* 하단 탭 */}
             <FootNav />
 
             {/* 알림 사이드 창 */}
