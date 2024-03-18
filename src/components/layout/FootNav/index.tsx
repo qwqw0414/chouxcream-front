@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 
 const menuItems = [
     { name: "HOME", link: "/", icon: faHouseChimneyWindow },
-    { name: "TEST", link: "/test", icon: faFileInvoice },
+    { name: "TEST", link: "/test/none", icon: faFileInvoice },
     { name: "SHOP", link: "/search", icon: faShop },
     { name: "SAVED", link: "/saved/tab/saved-product", icon: faBookmark },
     { name: "MY", link: "/my", icon: faUser },
