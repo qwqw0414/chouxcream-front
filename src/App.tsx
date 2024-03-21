@@ -6,6 +6,8 @@ import FindEmailPage from "./pages/login/find_email/FindEmailPage";
 import JoinPage from "./pages/join/JoinPage";
 import { ReduxTestPage } from "./pages/test/ReduxTestPage";
 import LoginPage from "./pages/login/Loginpage";
+import SavedProductPage from "./pages/mypage/shopping/saved/savedProduct/SavedProductPage";
+import RecentlyViewedPage from "./pages/mypage/shopping/saved/recentlyViewed/RecentlyViewedPage";
 
 interface RouteProps {
   path: string; // 라우트 경로
@@ -34,6 +36,12 @@ function App() {
     { path: "/login/find_email", component: FindEmailPage },
     { path: "/join", component: JoinPage },
     { path: "/login", component: LoginPage },
+    { path: "/my/", component: LoginPage },
+    { path: "/my/saved/tab/saved-product", component: SavedProductPage },
+    {
+      path: "/my/saved/tab/recently-viewed-product",
+      component: RecentlyViewedPage,
+    },
 
     // ############################################################
     // 테스트 페이지

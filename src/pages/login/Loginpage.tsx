@@ -5,7 +5,7 @@ import { IFormInput } from "../join/JoinPage";
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
   const {
     register,
     handleSubmit,
