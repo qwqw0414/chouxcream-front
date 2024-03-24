@@ -29,7 +29,6 @@ function App() {
     // 메인 페이지
     // ############################################################
     { path: "/", component: MainPage },
-    { path: "/test", component: TestPage },
     { path: "/login/find_password", component: FindPasswordPage },
     { path: "/login/find_email", component: FindEmailPage },
     { path: "/join", component: JoinPage },
@@ -38,7 +37,7 @@ function App() {
     // ############################################################
     // 테스트 페이지
     // ############################################################
-    { path: "/test/none", component: TestPage },
+    { path: "/test", component: TestPage },
     { path: "/test/redux", component: ReduxTestPage },
   ];
 
