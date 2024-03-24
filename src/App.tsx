@@ -8,6 +8,9 @@ import { ReduxTestPage } from "./pages/test/ReduxTestPage";
 import LoginPage from "./pages/login/Loginpage";
 import SavedProductPage from "./pages/mypage/shopping/saved/savedProduct/SavedProductPage";
 import RecentlyViewedPage from "./pages/mypage/shopping/saved/recentlyViewed/RecentlyViewedPage";
+import ProfilePage from "./pages/mypage/my/profile/ProfilePage";
+import ProfileEditPage from "./pages/mypage/my/profileEdit/ProfileEditPage";
+import AddressPage from "./pages/mypage/my/address/AddressPage";
 
 interface RouteProps {
   path: string; // 라우트 경로
@@ -41,6 +44,9 @@ function App() {
       path: "/my/saved/tab/recently-viewed-product",
       component: RecentlyViewedPage,
     },
+    { path: "/my/profile", component: ProfilePage },
+    { path: "/my/profile-edit", component: ProfileEditPage },
+    { path: "/my/address", component: AddressPage },
 
     // ############################################################
     // 테스트 페이지
