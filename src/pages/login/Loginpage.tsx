@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
   return (
-    <ContentsWrapper tabType={undefined}>
+    <ContentsWrapper tabType={undefined} block={'md'}>
       <div className="max-w-7xl m-auto min-h-[calc(100vh-270px)]">
         <form
           onSubmit={handleSubmit(onSubmit)}
