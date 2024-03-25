@@ -3,10 +3,12 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 interface MyPageNav {
+  title: string;
+  bordered: boolean;
   children: React.ReactNode;
 }
 
-const MyPageNav: React.FC<MyPageNav> = ({ children }) => {
+const MyPageNav: React.FC<MyPageNav> = ({ title, bordered, children }) => {
   return (
     <div className="flex max-w-[1280px] mt-[40px] mx-auto pb-[160px] px-[40px]">
       <div className="mr-[20px] w-[180px]">
@@ -65,7 +67,10 @@ const MyPageNav: React.FC<MyPageNav> = ({ children }) => {
           </div>
         </nav>
       </div>
-      <div className="flex-1">{children}</div>
+      <div className="flex-1">
+        <div className={`text-[24px] font-bold pb-[16px] ${bordered && "border-b-[3px] border-black border-solid"}`}>{title}</div>
+        <div>{children}</div>
+      </div>
     </div>
   );
 };
