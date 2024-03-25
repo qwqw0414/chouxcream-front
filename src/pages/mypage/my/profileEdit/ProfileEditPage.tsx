@@ -5,7 +5,7 @@ import React from 'react'
 const ProfileEditPage: React.FC = () => {
   return (
     <ContentsWrapper>
-      <MyPageNav>
+      <MyPageNav title="프로필 관리" bordered={true}>
         ProfileEditPage
       </MyPageNav>
     </ContentsWrapper>

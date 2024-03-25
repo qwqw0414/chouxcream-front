@@ -5,7 +5,7 @@ import React from 'react'
 const AddressPage: React.FC = () => {
   return (
     <ContentsWrapper>
-      <MyPageNav>
+      <MyPageNav title="주소록" bordered={false}>
         AddressPage
       </MyPageNav>
     </ContentsWrapper>
